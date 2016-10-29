@@ -15,5 +15,14 @@ angular.module('portalApp')
     $scope.detailsItem = item;    
     $scope.portalHelpers.showView('uwDoctorAvailabilityDetails.html', 2);
   };
+
+  $scope.filterByTime = function(item) {
+    //angular.forEach(item.availability, function(value) {
+    //    if(moment(value.start)>timeSlot.start && moment(value.end)>timeSlot.end) {
+    //        return true;
+    //    }
+    //});
+    return true;
+  };
 }]);
 

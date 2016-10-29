@@ -33,7 +33,9 @@ angular.module('portalApp')
 		}
 	];
 	
-    $
+    $scope.filter = function() {
+        console.log('here');
+    }
     
 	// Show main view in the first column as soon as controller loads
 	$scope.portalHelpers.showView('uwDoctorAvailabilityMain.html', 1);

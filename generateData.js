@@ -20,10 +20,9 @@ function createData(){
 
 function createTimeData(){
     var times = [];
-    var names = ['Motohito','Mihito','Hikohito','Fusahito','Katsuhito','Tomohito',
-                 'Michihito','Kazuhito','Kotohito','Okiko','Tsuguhito','Nagahito','Satohito','Asahito',
-                 'Toshiko','Yasuhito','Teruhito','Hidehito','Morohito','Ayahito',
-                 'Takauji','Yoshiakira','Yoshimitsu','Yoshimochi','Yoshikazu','Yoshinori'];
+    var names = ['Henry','Edward','Charles','James','William','Richard','Philip','Henry','Frederick','Arthur','Charles','James','Edgar','Thomas','Edmund',
+                 'George','John','Jacob','Humphrey','Robert','Stephen','Adam','Alexander','Albert','Alfred',
+                 'Ambrose','Andrew','Anthony','Archibald','Benjamin','Christopher','Daniel','David'];
     var minute = 540;
     for(var j=0;j<10;j++){
         var start = moment([2016, 10, 29, minute/60, minute%60]).format();

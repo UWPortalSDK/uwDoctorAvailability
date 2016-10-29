@@ -3,14 +3,6 @@ function createData(){
  for (var i=0;i<10;i++){
     var name = 'Doctor'+i;
     var times = [];
-     var images = ['http://www.800doctor.com/wp-content/uploads/2015/11/Doctor-Consultation.png',
-                  'http://efdreams.com/data_images/dreams/doctor/doctor-12.jpg',
-                  'http://tehachapidoctors.com/wp-content/uploads/2015/10/Tehachapi-Doctor.png',
-                  'http://www.dottorelondon.com/wp-content/uploads/2015/12/doctor1-1.png',
-                  'http://www.apollonion.com/assets/image/imagesplashdoc/women-img0001.png',
-                  'http://image.shutterstock.com/z/stock-photo-very-handsome-young-doctor-with-blue-eyes-portrait-96303416.jpg',
-                  'http://previews.123rf.com/images/andresr/andresr1207/andresr120700576/14599871-Portrait-of-friendly-male-doctor-smiling-Stock-Photo-medical.jpg',
-                 ];
     for(var j=0;j<10;j++){
         var start = moment([2016, 10, 19+i, 10+j, 15]).format();
         var end = moment([2016, 10, 19+i, 10+j, 55]).format();
@@ -20,14 +12,31 @@ function createData(){
 			'name': name,
 			'availability':times,
 			'speciality': 'Software',
-        	'image': images[i],
 	};
     mockData.push(obj);
-     
-     
  }  
  return mockData;
 };
+
+function createTimeData(){
+    var times = [];
+    var names = ['Henry','Edward','Charles','James','William','Richard','Philip','Henry','Frederick','Arthur','Charles','James','Edgar','Thomas','Edmund',
+                 'George','John','Jacob','Humphrey','Robert','Stephen','Adam','Alexander','Albert','Alfred',
+                 'Ambrose','Andrew','Anthony','Archibald','Benjamin','Christopher','Daniel','David'];
+    var minute = 540;
+    for(var j=0;j<10;j++){
+        var start = moment([2016, 10, 29, minute/60, minute%60]).format();
+        minute+=15;
+        var end = moment([2016, 10, 29, minute/60, minute%60]).format();
+        minute+=15;
+        var ran = Math.floor(Math.random() * names.length);
+        var doctors = names.slice(0,ran);
+		times.push({'start':start,'end':end,'doctors':doctors});
+    }
+    console.log(times);
+    return times;
+}
+
 
 function inTimeRange(start,end,timeSlot){
 	var timeSlotStart = moment(timeSlot.start);

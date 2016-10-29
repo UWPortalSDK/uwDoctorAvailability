@@ -6,9 +6,9 @@ function createTimeData(){
                  'Ambrose','Andrew','Anthony','Archibald','Benjamin','Christopher','Daniel','David'];
     var minute = 540;
     for(var j=0;j<10;j++){
-        var start = moment([2016, 10, 29, minute/60, minute%60]).format();
+        var start = moment([2016, 9, 28, minute/60, minute%60]).unix()*1000;
         minute+=15;
-        var end = moment([2016, 10, 29, minute/60, minute%60]).format();
+        var end = moment([2016, 9, 28, minute/60, minute%60]).unix()*1000;
         minute+=15;
         var ran = Math.floor(Math.random() * names.length);
         var doctors = Object.keys(namesMap).slice(0,ran);

@@ -3,7 +3,7 @@
     <label>Enter time</label>
     <input type="text"></input>
     <input type="submit" ng-click="filter()"></input>
-    <widget-list list="item in items.value track by item.name" show-items="3">
+    <widget-list list="item in items.value track by item.name | filter: filterByTime" show-items="3">
         <widget-row clickable ng-click="showDetails(item)">
             <widget-cell fill>
                 <span class="itemName">{{item.name}}</span>

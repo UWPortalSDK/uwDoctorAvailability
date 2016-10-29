@@ -1,4 +1,3 @@
-function createData(){
  var mockData = [];
  for (var i=0;i<10;i++){
     var name = 'Doctor'+i;

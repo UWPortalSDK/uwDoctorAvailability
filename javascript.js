@@ -1,3 +1,4 @@
+
 var import = ["generateData.js"];
 angular.module('portalApp')
 .controller('uwDoctorAvailabilityCtrl', ['$scope', function ($scope) {
@@ -72,3 +73,4 @@ angular.module('portalApp')
     $scope.portalHelpers.showView('uwDoctorAvailabilityDetails.html', 2);
   };
 }]);
+

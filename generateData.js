@@ -22,3 +22,9 @@ function createData(){
     
 }
 
+function inTimeRange(start,end,timeSlot){
+	var timeSlotStart = moment(timeSlot.start);
+    var timeSlotEnd = moment(timeSlot.end);
+    return (moment(start)>timeSlot.start && moment(end)>timeSlotEnd);    
+}
+

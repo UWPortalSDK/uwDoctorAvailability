@@ -1,7 +1,9 @@
 <!-- Primary template that will get shown when widget loads -->
 <script type="text/ng-template" id="uwDoctorAvailabilityMain.html"> 
     <label>Enter time</label>
-    <input type="text"></input>
+    <input type="text" value="{{date-filter}}"></input>
+    <input type="submit" ng-click="filter()"></input>
+    
     <widget-row ng-repeat="item in items" clickable ng-click="showDetails(item)">
 		<widget-cell fill>
 			<span class="itemName">{{item.name}}</span>

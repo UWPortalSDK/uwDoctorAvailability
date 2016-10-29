@@ -1,4 +1,4 @@
-
+//note that the data is offset by 1 day because of timezone issues. 
 var imports = ["generateData.js"];
 angular.module('portalApp')
 .controller('uwDoctorAvailabilityCtrl', ['$scope', function ($scope) {

@@ -18,8 +18,6 @@ function createData(){
      
  }  
  return mockData;
-    
-    
 };
 
 function inTimeRange(start,end,timeSlot){

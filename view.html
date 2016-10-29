@@ -20,7 +20,7 @@
     <widget-list list="item in items.value track by item.start" show-items="3">
         <widget-row clickable ng-click="showDetails(item)">
             <widget-cell fill>
-                <span class="itemName">{{item.start | date:'HH:mm'}}-{{item.end | date: 'HH:mm'}}</span>
+                <span class="itemName">{{item.start | date:'h:mm a'}}-{{item.end | date: 'h:mm a'}}</span>
                 <ng-pluralize count="{{item.doctors.length}}"
               			when="{'1': '{{item.doctors.length}} appointment available',
                      	'other': '{{item.doctors.length}} appointments available'}">

@@ -1,3 +1,4 @@
+function createData(){
  var mockData = [];
  for (var i=0;i<10;i++){
     var name = 'Doctor'+i;
@@ -19,7 +20,7 @@
  return mockData;
     
     
-}
+};
 
 function inTimeRange(start,end,timeSlot){
 	var timeSlotStart = moment(timeSlot.start);

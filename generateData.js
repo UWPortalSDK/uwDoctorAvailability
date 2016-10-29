@@ -1,26 +1,6 @@
-function createData(){
- var mockData = [];
- for (var i=0;i<10;i++){
-    var name = 'Doctor'+i;
-    var times = [];
-    for(var j=0;j<10;j++){
-        var start = moment([2016, 10, 19+i, 10+j, 15]).format();
-        var end = moment([2016, 10, 19+i, 10+j, 55]).format();
-        times.push({'start':start,'end':end});     
-    }
-    var obj = {
-			'name': name,
-			'availability':times,
-			'speciality': 'Software',
-	};
-    mockData.push(obj);
- }  
- return mockData;
-};
-
 function createTimeData(){
     var times = [];
-    var names = ['Henry','Edward','Charles','James','William','Richard','Philip','Henry','Frederick','Arthur','Charles','James','Edgar','Thomas','Edmund',
+    var names = ['Henry','Edward','Charles','James','William','Richard','Philip','Mary','Frederick','Arthur','Lauren','Jane','Edgar','Thomas','Edmund',
                  'George','John','Jacob','Humphrey','Robert','Stephen','Adam','Alexander','Albert','Alfred',
                  'Ambrose','Andrew','Anthony','Archibald','Benjamin','Christopher','Daniel','David'];
     var minute = 540;

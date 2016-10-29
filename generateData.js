@@ -18,6 +18,27 @@ function createData(){
  return mockData;
 };
 
+function createTimeData(){
+    var times = [];
+    var names = ['Motohito','Mihito','Hikohito','Fusahito','Katsuhito','Tomohito',
+                 'Michihito','Kazuhito','Kotohito','Okiko','Tsuguhito','Nagahito','Satohito','Asahito',
+                 'Toshiko','Yasuhito','Teruhito','Hidehito','Morohito','Ayahito',
+                 'Takauji','Yoshiakira','Yoshimitsu','Yoshimochi','Yoshikazu','Yoshinori'];
+    var minute = 540;
+    for(var j=0;j<10;j++){
+        var start = moment([2016, 10, 19, minute/60, minute%60]).format();
+        minute+=15;
+        var end = moment([2016, 10, 19, minute/60, minute%60]).format();
+        minute+=15;
+        var ran = Math.floor(Math.random() * names.length);
+        var doctors = names.slice(0,ran);
+		times.push({'start':start,'end':end,'doctors':doctors});
+    }
+    console.log(times);
+    return times;
+}
+
+
 function inTimeRange(start,end,timeSlot){
 	var timeSlotStart = moment(timeSlot.start);
     var timeSlotEnd = moment(timeSlot.end);

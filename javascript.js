@@ -17,19 +17,22 @@ angular.module('portalApp')
   };
 
   $scope.filterByTime = function() {
-    console.log("called")
-    
     var date = $scope.date.selectedDate;
-    var start = date.setHours($scope.date.startTime.getHours(), $scope.date.startTime.getMinutes());
-    var end = date.setHours($scope.date.endTime.getHours(), $scope.date.endTime.getMinutes());
-    /*angular.forEach(
-    angular.forEach(item.availability, function(value) {
-        
-        if(moment(value.start)<moment($scope.start) && moment(value.end)>moment($scope.end)) {
-            return true;
-        }
-    });
-    return false;*/
+    $scope.filteredTimeSlots=[];
+    var start = date.getTime();
+    var end = date.getTime();
+    console.log("-----------here---------------");
+    start += ($scope.date.startTime.getHours() * 60 * 60 + $scope.date.startTime.getMinutes() * 60)*1000 ;
+    end += ($scope.date.endTime.getHours() * 60 * 60 + $scope.date.endTime.getMinutes() * 60)*1000 ;
+    console.log($scope.items);
+    console.log(start);
+    console.log(end);
+    for (var i=0;i<$scope.items.value.length;i++){
+    	var timeSlot=$scope.items.value[i];
+       	if (timeSlot.start>=start && timeSlot.end<=end && timeSlot.doctors.length>0){
+       		$scope.filteredTimeSlots.push(timeSlot);
+       	}
+    }
   };
     //calender stuff
     $scope.inlineOptions = {

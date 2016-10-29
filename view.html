@@ -1,6 +1,20 @@
 <!-- Primary template that will get shown when widget loads -->
 <script type="text/ng-template" id="uwDoctorAvailabilityMain.html"> 
-    <label>Enter time</label>
+    <label>Enter Date</label>
+    <div class="row">
+        <div class = "col-xs-10">
+    	<input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedDate" is-open="CalPopup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+    	</div>
+        <div class = "col-xs-1">
+            <span class="input-group-btn">
+    		<button type="button" class="btn btn-default" ng-click="openCalender()"><i class="glyphicon glyphicon-calendar"></i></button>
+    	</span>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6" uib-timepicker ng-model="startTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
+    	<div class="col-xs-6" uib-timepicker ng-model="endTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
+ 	</div>
     <input type="text"></input>
     <input type="submit" ng-click="filter()"></input>
     <widget-list list="item in items.value track by item.name | filter: filterByTime" show-items="3">

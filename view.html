@@ -1,35 +1,31 @@
 <!-- Primary template that will get shown when widget loads -->
 <script type="text/ng-template" id="uwDoctorAvailabilityMain.html"> 
-    <hr>
-    <br>
     <label>Enter Date</label>
     <div class="row">
         <div class = "col-xs-10">
-    	<input type="text" class="form-control" ng-change="filterByTime()" ng-model="date.selectedDate" uib-datepicker-popup="{{format}}"  is-open="CalPopup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
-    	</div>
+      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedDate" is-open="CalPopup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      </div>
         <div class = "col-xs-1">
             <span class="input-group-btn">
-    		<button type="button" class="btn btn-default" ng-click="openCalender()"><i class="glyphicon glyphicon-calendar"></i></button>
-    	</span>
+        <button type="button" class="btn btn-default" ng-click="openCalender()"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
             </div>
     </div>
-    <hr>
-    <br>
     <div class="row">
-        <div class="col-xs-6">
-            <label>Start Time</label>
-            <div uib-timepicker ng-model="startTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
-        </div>
-    	<div class="col-xs-6">
-            <label>End Time</label>
-            <div uib-timepicker ng-model="endTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
-        </div>
- 	</div>
-    <hr>
-    <widget-list list="item in items.value track by item.name" show-items="3">
+        <div class="col-xs-6" uib-timepicker ng-model="startTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
+      <div class="col-xs-6" uib-timepicker ng-model="endTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
+  </div>
+    <input type="text"></input>
+    <input type="submit" ng-click="filter()"></input>
+    <widget-list list="item in items.value track by item.start" show-items="3">
         <widget-row clickable ng-click="showDetails(item)">
             <widget-cell fill>
-                <span class="itemName">{{item.name}}</span>
+                <span class="itemName">{{item.start | date:'HH:mm'}}-{{item.end | date: 'HH:mm'}}</span>
+                <ng-pluralize count="{{item.doctors.length}}"
+              			when="{'1': '{{item.doctors.length}} appointment available',
+                     	'other': '{{item.doctors.length}} appointments available'}">
+				</ng-pluralize>
+<!--                 <span>{{item.doctors.length}} appointments available</span> -->
             </widget-cell>
             <widget-cell>
                 <widget-icon name="angle-right"></widget-icon>
@@ -41,10 +37,9 @@
 <!-- This template gets shown when user clicks one of the items in the list -->
 <script type="text/ng-template" id="uwDoctorAvailabilityDetails.html"> 
   <!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
-  <wr>
+  <wr ng-repeat="item in detailsItem.doctors">
       <wc>
-          <h2>Name: Dr. {{detailsItem.name}}</h2>
-          <h4>Specialty: {{detailsItem.speciality}}</h4>
+          <h2>Name: Dr. {{item}}</h2>
       </wc>
   </wr>
 </script>

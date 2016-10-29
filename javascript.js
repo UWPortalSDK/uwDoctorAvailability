@@ -4,8 +4,8 @@ angular.module('portalApp')
 .controller('uwDoctorAvailabilityCtrl', ['$scope', function ($scope) {
   
   // mock data
-  $scope.items = {value: createData()};
-    
+  //$scope.items = {value: createData()};
+  var items = {value: createData()};
   // Show main view in the first column as soon as controller loads
   $scope.portalHelpers.showView('uwDoctorAvailabilityMain.html', 1);
   
@@ -16,13 +16,20 @@ angular.module('portalApp')
     $scope.portalHelpers.showView('uwDoctorAvailabilityDetails.html', 2);
   };
 
-  $scope.filterByTime = function(item) {
-    //angular.forEach(item.availability, function(value) {
-    //    if(moment(value.start)>timeSlot.start && moment(value.end)>timeSlot.end) {
-    //        return true;
-    //    }
-    //});
-    return true;
+  $scope.filterByTime = function() {
+    console.log("called")
+    
+    var date = $scope.date.selectedDate;
+    var start = date.setHours($scope.date.startTime.getHours(), $scope.date.startTime.getMinutes());
+    var end = date.setHours($scope.date.endTime.getHours(), $scope.date.endTime.getMinutes());
+    /*angular.forEach(
+    angular.forEach(item.availability, function(value) {
+        
+        if(moment(value.start)<moment($scope.start) && moment(value.end)>moment($scope.end)) {
+            return true;
+        }
+    });
+    return false;*/
   };
     //calender stuff
     $scope.inlineOptions = {
@@ -67,8 +74,11 @@ angular.module('portalApp')
 
       return '';
     }
-    $scope.selectedDate = new Date();
-
+    $scope.date = {selectedDate: new Date(),
+                   startTime: new Date(),
+                   endTime: new Date()
+                  };
+    
     //$scope.selectedDate.setHours(1);
     //$scope.selectedDate.setMinutes(20);
     $scope.openCalender = function() {

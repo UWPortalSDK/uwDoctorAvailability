@@ -5,7 +5,7 @@ angular.module('portalApp')
   
   // mock data
   //$scope.items = {value: createData()};
-  var items = {value: createData()};
+  $scope.items = {value: createTimeData()};
   // Show main view in the first column as soon as controller loads
   $scope.portalHelpers.showView('uwDoctorAvailabilityMain.html', 1);
   

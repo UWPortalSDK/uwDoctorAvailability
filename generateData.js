@@ -18,9 +18,7 @@ function createData(){
      
  }  
  return mockData;
-    
-    
-}
+};
 
 function inTimeRange(start,end,timeSlot){
 	var timeSlotStart = moment(timeSlot.start);

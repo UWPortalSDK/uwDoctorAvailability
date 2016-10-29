@@ -21,10 +21,12 @@
         <widget-row clickable ng-click="showDetails(item)">
             <widget-cell fill>
                 <span class="itemName">{{item.start | date:'h:mm a'}}-{{item.end | date: 'h:mm a'}}</span>
+                <div>
                 <ng-pluralize count="{{item.doctors.length}}"
               			when="{'1': '{{item.doctors.length}} appointment available',
                      	'other': '{{item.doctors.length}} appointments available'}">
 				</ng-pluralize>
+                </div>
 <!--                 <span>{{item.doctors.length}} appointments available</span> -->
             </widget-cell>
             <widget-cell>

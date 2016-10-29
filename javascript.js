@@ -1,3 +1,4 @@
+var import = ["generateData.js"];
 angular.module('portalApp')
 .controller('uwDoctorAvailabilityCtrl', ['$scope', function ($scope) {
   

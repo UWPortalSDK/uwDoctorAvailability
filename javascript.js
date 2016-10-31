@@ -1,4 +1,3 @@
-//note that the data is offset by 1 day because of timezone issues. 
 var imports = ["generateData.js"];
 angular.module('portalApp')
 .controller('uwDoctorAvailabilityCtrl', ['$scope', function ($scope) {
@@ -19,17 +18,20 @@ angular.module('portalApp')
   $scope.filterByTime = function() {
     var date = $scope.date.selectedDate;
     $scope.filteredTimeSlots=[];
-    var start = date.getTime();
-    var end = date.getTime();
-    console.log("-----------here---------------");
-    start += ($scope.date.startTime.getHours() * 60 * 60 + $scope.date.startTime.getMinutes() * 60)*1000 ;
-    end += ($scope.date.endTime.getHours() * 60 * 60 + $scope.date.endTime.getMinutes() * 60)*1000 ;
-    console.log($scope.items);
-    console.log(start);
-    console.log(end);
+    var start = new Date($scope.date.selectedDate.getFullYear(),
+            $scope.date.selectedDate.getMonth(),
+            $scope.date.selectedDate.getDate(),
+            $scope.date.startTime.getHours(),
+            $scope.date.startTime.getMinutes());
+      
+    var end = new Date($scope.date.selectedDate.getFullYear(),
+            $scope.date.selectedDate.getMonth(),
+            $scope.date.selectedDate.getDate(),
+            $scope.date.endTime.getHours(),
+            $scope.date.endTime.getMinutes());
     for (var i=0;i<$scope.items.value.length;i++){
     	var timeSlot=$scope.items.value[i];
-       	if (timeSlot.start>=start && timeSlot.end<=end && timeSlot.doctors.length>0){
+       	if (new Date(timeSlot.start)>=start && new Date(timeSlot.end)<=end && timeSlot.doctors.length>0){
        		$scope.filteredTimeSlots.push(timeSlot);
        	}
     }

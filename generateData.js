@@ -17,6 +17,9 @@ function createTimeData(){
     console.log(times);
     return times;
 }
+function getPosition(name){
+   return namesMap[name]; 
+}
 function scrapeRealNames(){
     var doctors = {};
     

@@ -3,7 +3,11 @@
     <label>Enter Date</label>
     <div class="row">
         <div class = "col-xs-10">
-      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="selectedDate" is-open="CalPopup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" 
+             ng-model="date.selectedDate" ng-change="filterByTime()" 
+             is-open="CalPopup.opened" datepicker-options="dateOptions"
+             ng-required="true" close-text="Close" 
+             alt-input-formats="altInputFormats" />
       </div>
         <div class = "col-xs-1">
             <span class="input-group-btn">
@@ -12,12 +16,10 @@
             </div>
     </div>
     <div class="row">
-        <div class="col-xs-6" uib-timepicker ng-model="startTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
-      <div class="col-xs-6" uib-timepicker ng-model="endTime" ng-change="changed()" hour-step="1" minute-step="1" show-meridian="true"></div>
+        <div class="col-xs-6" uib-timepicker ng-model="date.startTime" ng-change="filterByTime()" hour-step="1" minute-step="1" show-meridian="true"></div>
+      <div class="col-xs-6" uib-timepicker ng-model="date.endTime" ng-change="filterByTime()" hour-step="1" minute-step="1" show-meridian="true"></div>
   </div>
-    <input type="text"></input>
-    <input type="submit" ng-click="filter()"></input>
-    <widget-list list="item in items.value track by item.start" show-items="3">
+    <widget-list list="item in filteredTimeSlots track by item.start" show-items="3">
         <widget-row clickable ng-click="showDetails(item)">
             <widget-cell fill>
                 <span class="itemName">{{item.start | date:'h:mm a'}}-{{item.end | date: 'h:mm a'}}</span>
@@ -34,6 +36,14 @@
             </widget-cell>
         </widget-row>
     </widget-list>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
+    <input class="placeholder" type="text"></input>
 </script>
 
 <!-- This template gets shown when user clicks one of the items in the list -->

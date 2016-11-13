@@ -1,4 +1,3 @@
-
 var imports = ["generateData.js"];
 angular.module('portalApp')
 .controller('uwDoctorAvailabilityCtrl', ['$scope', function ($scope) {
@@ -17,19 +16,25 @@ angular.module('portalApp')
   };
 
   $scope.filterByTime = function() {
-    console.log("called")
-    
     var date = $scope.date.selectedDate;
-    var start = date.setHours($scope.date.startTime.getHours(), $scope.date.startTime.getMinutes());
-    var end = date.setHours($scope.date.endTime.getHours(), $scope.date.endTime.getMinutes());
-    /*angular.forEach(
-    angular.forEach(item.availability, function(value) {
-        
-        if(moment(value.start)<moment($scope.start) && moment(value.end)>moment($scope.end)) {
-            return true;
-        }
-    });
-    return false;*/
+    $scope.filteredTimeSlots=[];
+    var start = new Date($scope.date.selectedDate.getFullYear(),
+            $scope.date.selectedDate.getMonth(),
+            $scope.date.selectedDate.getDate(),
+            $scope.date.startTime.getHours(),
+            $scope.date.startTime.getMinutes());
+      
+    var end = new Date($scope.date.selectedDate.getFullYear(),
+            $scope.date.selectedDate.getMonth(),
+            $scope.date.selectedDate.getDate(),
+            $scope.date.endTime.getHours(),
+            $scope.date.endTime.getMinutes());
+    for (var i=0;i<$scope.items.value.length;i++){
+    	var timeSlot=$scope.items.value[i];
+       	if (new Date(timeSlot.start)>=start && new Date(timeSlot.end)<=end && timeSlot.doctors.length>0){
+       		$scope.filteredTimeSlots.push(timeSlot);
+       	}
+    }
   };
     //calender stuff
     $scope.inlineOptions = {

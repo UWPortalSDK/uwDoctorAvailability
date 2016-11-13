@@ -5,3 +5,5 @@
 .widgetTitle {
     color: #801cc1 !important;
 }
+
+.placeholder { visibility:hidden }
